@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<edifact-message type="IPPOAD" description="Dansk pant" version="5.2">
+	<segments>
+		<segment id="UNH" name="Interchange Header" header="true" />
+		<segment id="BGM" name="Beginning of Message" />
+		<segment id="ATT" position="0011" name="Attribute" />
+		<segment id="RFF" position="0016" name="Reference" />
+		<segment id="DTM" position="0021" name="Date/Time/Period" />
+		<segment id="PNA" position="0041" name="Party Identification" />
+		<segment id="ICD" name="Insurance Cover Description" />
+		<segment id="IDE" name="Identity" />
+		<segment id="ATT" position="0076" name="Attribute" />
+		<segment id="DTM" position="0086" name="Date/Time/Period" />
+		<segment id="MOA" name="Monetary Amount" />
+		<segment id="RFF" position="0111" name="Reference" />
+		<segment id="FTX" name="Free Text" />
+		<segment id="PNA" position="0246" name="Party Identification" />
+		<segment id="CTA" name="Contact Information" />
+		<segment id="COM" name="Communication Contact" />
+		<segment id="COD" name="Component Details" />
+		<segment id="ADR" name="Address" />
+		<segment id="ROD" name="Risk Object Type" />
+		<segment id="ATT" position="0481" name="Attribute" />
+		<segment id="DTM" position="0491" name="Date/Time/Period" />
+		<segment id="RFF" position="0521" name="Reference" />
+		<segment id="UNT" name="Message Trailer" trailer="true" />
+	</segments>
+	<structure>
+		<segment-ref id="UNH" required="true" />
+		<segment-ref id="BGM" required="true" />
+		<segment-ref id="ATT" position="0011" min="0" max="9" />
+		<segment-ref id="RFF" min="0" max="9" />
+		<segment-ref id="DTM" min="0" max="9" />
+		<group min="0" max="9">
+			<segment-ref id="PNA" required="true" />
+		</group>
+		<group min="1" max="999">
+			<segment-ref id="ICD" required="true" />
+			<segment-ref id="IDE" min="1" max="9" />
+			<segment-ref id="ATT" min="0" max="99" />
+			<segment-ref id="DTM" min="0" max="99" />
+			<segment-ref id="MOA" min="0" max="9" />
+			<segment-ref id="RFF" min="0" max="9" />
+			<segment-ref id="FTX" min="0" max="99" />
+		</group>
+		<group min="0" max="9999">
+			<segment-ref id="PNA" required="true" />
+		</group>
+		<group min="0" max="9">
+			<segment-ref id="CTA" required="true" />
+			<segment-ref id="COM" min="0" max="9" />
+		</group>
+		<group min="0" max="999">
+			<segment-ref id="COD" required="true" />
+			<segment-ref id="ADR" min="0" max="9" />
+		</group>
+		<group min="0" max="99">
+			<segment-ref id="ROD" required="true" />
+			<segment-ref id="ATT" min="0" max="99" />
+			<segment-ref id="DTM" min="0" max="99" />
+			<segment-ref id="RFF" min="0" max="9" />
+		</group>
+		<segment-ref id="UNT" required="true" />
+	</structure>
+</edifact-message>
