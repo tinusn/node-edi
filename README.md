@@ -1,4 +1,4 @@
 node-edi
 ========
 
-A prototype of parsing edi files with node
+a POC for parsing edi files with node
